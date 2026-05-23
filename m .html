@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey Bestie ✨</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(-45deg,#bde0fe,#cdb4db,#d9f0ff,#e6d7ff);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+padding:20px;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.floating{
+position:absolute;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{opacity:1;}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+.card{
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:25px;
+width:100%;
+max-width:420px;
+text-align:center;
+box-shadow:0 8px 30px rgba(0,0,0,0.15);
+z-index:2;
+}
+
+h1{
+color:#5c4b8a;
+font-size:2rem;
+margin-bottom:15px;
+}
+
+#typing{
+font-size:15px;
+color:#333;
+line-height:1.8;
+min-height:180px;
+}
+
+button{
+margin-top:20px;
+padding:12px 22px;
+border:none;
+border-radius:30px;
+background:#8e7dff;
+color:white;
+font-size:15px;
+cursor:pointer;
+transition:0.3s;
+font-weight:600;
+}
+
+button:hover{
+transform:scale(1.05);
+background:#7566e8;
+}
+
+#surprise{
+margin-top:15px;
+font-size:14px;
+color:#5a4d7a;
+display:none;
+font-weight:500;
+}
+
+@media(max-width:500px){
+.card{
+padding:25px;
+}
+h1{
+font-size:1.7rem;
+}
+#typing{
+font-size:14px;
+}
+}
+</style>
+</head>
+<body>
+
+<div class="floating" style="left:10%;">✨</div>
+<div class="floating" style="left:25%; animation-delay:2s;">☁️</div>
+<div class="floating" style="left:45%; animation-delay:4s;">⭐</div>
+<div class="floating" style="left:70%; animation-delay:1s;">💙</div>
+<div class="floating" style="left:90%; animation-delay:3s;">✨</div>
+
+<div class="card">
+<h1>Hey You 😭✨</h1>
+
+<p id="typing"></p>
+
+<button onclick="showSurprise()">Tap For Surprise 🎁</button>
+
+<p id="surprise">
+Plot twist: You're actually one of the coolest people I know 😌💙
+</p>
+</div>
+
+<script>
+const text = `Okay listen—this is your official reminder that you're weird, dramatic sometimes, and still somehow a pretty amazing friend 😭✨ 
+Life becomes less boring with your random talks, jokes, and chaotic energy around. 
+You have this talent of making normal moments memorable without even trying. 
+So if nobody told you today—you're appreciated more than you know. 
+Don't overthink too much and keep being your funny self because honestly, the world needs more people like you 💙`;
+
+let i = 0;
+function typingEffect(){
+if(i < text.length){
+document.getElementById("typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typingEffect,35);
+}
+}
+typingEffect();
+
+function showSurprise(){
+document.getElementById("surprise").style.display="block";
+
+confetti({
+particleCount:180,
+spread:120,
+origin:{y:0.6}
+});
+}
+
+window.onload = () => {
+confetti({
+particleCount:120,
+spread:100,
+origin:{y:0.5}
+});
+}
+</script>
+
+</body>
+</html>
